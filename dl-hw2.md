@@ -62,13 +62,13 @@ tensor([11, 14, 15, 16, 17,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
 ```
 *Note*: we did not use `BPETokenizer` or other pre-defined tokenizer for tokenizing, we build our own tokenizer (words to ids mapping)
 
----
+
 ### 2. Implement a seq2seq model with attention using PyTorch
 We copy the codes [PyTorch Tutorial](https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html)
 ### 3. Train the network starting from random initialization
 **Loss curve:**
 we record traing loss every 5 epochs, we have total 80 epochs.
-<img src="misc/seq2seq_loss.png" style="zoom:70%">
+<img src="misc/seq2seq_loss.png" style="zoom:100%">
 
 **Model translation**: 10 examples from test set:
 
@@ -182,7 +182,7 @@ We tried `minGPT` from [Karpathy](https://github.com/karpathy/minGPT/tree/master
 
 **Loss curve:**
 we record traing loss every 5 epochs, we have total 80 epochs.
-<img src="misc/gpt_loss.png" style="zoom:70%">
+<img src="misc/gpt_loss.png" style="zoom:100%">
 
 **Model translation**: 10 examples from test set:
 *Note:*
@@ -246,8 +246,11 @@ predict ends
 The accuracy of translation by `GPT` is obviously higher than that of `seq2seq`
 
 **Attention Weights of layer0 head 0-3 Visualization**
-<img src="misc/attn-layer0-head0.png" style="zoom:46%"><img src="misc/attn-layer0-head1.png" style="zoom:46%">
-<img src="misc/attn-layer0-head2.png" style="zoom:46%"><img src="misc/attn-layer0-head3.png" style="zoom:46%">
+<img src="misc/attn-layer0-head0.png" style="zoom:70%"><img src="misc/attn-layer0-head1.png" style="zoom:70%">
+<img src="misc/attn-layer0-head2.png" style="zoom:70%"><img src="misc/attn-layer0-head3.png" style="zoom:70%">
 **Attention Weights of layer1 head 0-3 Visualization**
-<img src="misc/attn-layer1-head0.png" style="zoom:46%"><img src="misc/attn-layer1-head1.png" style="zoom:46%">
-<img src="misc/attn-layer1-head2.png" style="zoom:46%"><img src="misc/attn-layer1-head3.png" style="zoom:46%">
+<img src="misc/attn-layer1-head0.png" style="zoom:70%"><img src="misc/attn-layer1-head1.png" style="zoom:70%">
+<img src="misc/attn-layer1-head2.png" style="zoom:70%"><img src="misc/attn-layer1-head3.png" style="zoom:70%">
+
+---
+## Part B: Fine Tune a Quantized *Qwen/Qwen2.5-3B-Instruct* With LoRA
