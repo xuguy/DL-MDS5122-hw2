@@ -1,0 +1,281 @@
+[{"stream_name":"stderr","time":5.970225228,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":5.97029645,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":5.970304045,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":5.970308291,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.676057983,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.676088426,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.676094758,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.676099299,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":13.83808789,"data":"Reading lines...\n"}
+,{"stream_name":"stdout","time":14.385959554,"data":"Read 26918 sentence pairs\n"}
+,{"stream_name":"stdout","time":14.385992588,"data":"Trimmed to 26918 sentence pairs\n"}
+,{"stream_name":"stdout","time":14.385999296,"data":"Counting words...\n"}
+,{"stream_name":"stdout","time":14.386004821,"data":"Counted words:\n"}
+,{"stream_name":"stdout","time":14.386010656,"data":"cmn 3594\n"}
+,{"stream_name":"stdout","time":14.386015887,"data":"eng 6724\n"}
+,{"stream_name":"stdout","time":14.386021453,"data":"['用 优 质 材 料 做 的 家 具 卖 得 很 好 。', 'furniture made of good materials sells well']\n"}
+,{"stream_name":"stdout","time":14.386027674,"data":"3594\n"}
+,{"stream_name":"stdout","time":14.695652919,"data":"Reading lines...\n"}
+,{"stream_name":"stdout","time":15.152582168,"data":"Read 26918 sentence pairs\n"}
+,{"stream_name":"stdout","time":15.152609607,"data":"Trimmed to 26918 sentence pairs\n"}
+,{"stream_name":"stdout","time":15.152627127,"data":"Counting words...\n"}
+,{"stream_name":"stdout","time":15.152633034,"data":"Counted words:\n"}
+,{"stream_name":"stdout","time":15.152638549,"data":"cmn 3594\n"}
+,{"stream_name":"stdout","time":15.15264379,"data":"eng 6724\n"}
+,{"stream_name":"stdout","time":363.00770403,"data":"5m 47s (- 86m 49s) (5 6%) 0.6406\n"}
+,{"stream_name":"stdout","time":705.201102132,"data":"11m 29s (- 80m 26s) (10 12%) 0.3576\n"}
+,{"stream_name":"stdout","time":1046.745994361,"data":"17m 11s (- 74m 27s) (15 18%) 0.2485\n"}
+,{"stream_name":"stdout","time":1387.654376998,"data":"22m 51s (- 68m 35s) (20 25%) 0.1909\n"}
+,{"stream_name":"stdout","time":1728.321820637,"data":"28m 32s (- 62m 47s) (25 31%) 0.1565\n"}
+,{"stream_name":"stdout","time":2070.282365129,"data":"34m 14s (- 57m 4s) (30 37%) 0.1336\n"}
+,{"stream_name":"stdout","time":2409.722370958,"data":"39m 53s (- 51m 17s) (35 43%) 0.1173\n"}
+,{"stream_name":"stdout","time":2748.77383951,"data":"45m 33s (- 45m 33s) (40 50%) 0.1052\n"}
+,{"stream_name":"stdout","time":3087.958587458,"data":"51m 12s (- 39m 49s) (45 56%) 0.0956\n"}
+,{"stream_name":"stdout","time":3432.970965896,"data":"56m 57s (- 34m 10s) (50 62%) 0.0876\n"}
+,{"stream_name":"stdout","time":3783.684551857,"data":"62m 47s (- 28m 32s) (55 68%) 0.0813\n"}
+,{"stream_name":"stdout","time":4124.723592708,"data":"68m 29s (- 22m 49s) (60 75%) 0.0762\n"}
+,{"stream_name":"stdout","time":4463.523375188,"data":"74m 7s (- 17m 6s) (65 81%) 0.0715\n"}
+,{"stream_name":"stdout","time":4801.492519226,"data":"79m 45s (- 11m 23s) (70 87%) 0.0675\n"}
+,{"stream_name":"stdout","time":5140.827740958,"data":"85m 25s (- 5m 41s) (75 93%) 0.0642\n"}
+,{"stream_name":"stdout","time":5479.298740067,"data":"91m 3s (- 0m 0s) (80 100%) 0.0616\n"}
+,{"stream_name":"stdout","time":5480.164296126,"data":"input:  昨 晚 是 满 月 。\n"}
+,{"stream_name":"stdout","time":5480.164328126,"data":"target:  the moon was full last night\n"}
+,{"stream_name":"stdout","time":5480.164334765,"data":"model:  last month \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.164341104,"data":"\n"}
+,{"stream_name":"stdout","time":5480.164345936,"data":"input:  當 我 到 達 時 ， 天 正 下 著 雨 。\n"}
+,{"stream_name":"stdout","time":5480.164351022,"data":"target:  when i arrived it was raining\n"}
+,{"stream_name":"stdout","time":5480.164358341,"data":"model:  sometimes i stay in june tomorrow \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.164362686,"data":"\n"}
+,{"stream_name":"stdout","time":5480.164365945,"data":"input:  我 往 右 拐 了 。\n"}
+,{"stream_name":"stdout","time":5480.164369449,"data":"target:  i turned right\n"}
+,{"stream_name":"stdout","time":5480.164372796,"data":"model:  i stood there \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.164376267,"data":"\n"}
+,{"stream_name":"stdout","time":5480.164379548,"data":"input:  新 娘 好 像 非 常 漂 亮 。\n"}
+,{"stream_name":"stdout","time":5480.16438311,"data":"target:  the bride seems to be very pretty\n"}
+,{"stream_name":"stdout","time":5480.164386503,"data":"model:  to be pretty beautiful \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.164389964,"data":"\n"}
+,{"stream_name":"stdout","time":5480.164393247,"data":"input:  董 事 会 一 致 决 定 任 命 她 为 执 行 总 裁 。\n"}
+,{"stream_name":"stdout","time":5480.164396787,"data":"target:  the board unanimously decided to appoint her as ceo\n"}
+,{"stream_name":"stdout","time":5480.164400176,"data":"model:  yesterday instead of us \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.164403649,"data":"\n"}
+,{"stream_name":"stdout","time":5480.164406889,"data":"input:  湯 姆 說 他 很 高 興 瑪 麗 畢 業 了 。\n"}
+,{"stream_name":"stdout","time":5480.164410325,"data":"target:  tom said he s glad mary has finally graduated\n"}
+,{"stream_name":"stdout","time":5480.164413717,"data":"model:  tom s mistaken number but he wore a little dream \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.164417189,"data":"\n"}
+,{"stream_name":"stdout","time":5480.164420424,"data":"input:  她 買 了 兩 磅 的 奶 油 。\n"}
+,{"stream_name":"stdout","time":5480.16442385,"data":"target:  she bought two pounds of butter\n"}
+,{"stream_name":"stdout","time":5480.164427219,"data":"model:  two bought two pairs of english butter \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.164430692,"data":"\n"}
+,{"stream_name":"stdout","time":5480.164433929,"data":"input:  時 間 匆 匆 經 過 。\n"}
+,{"stream_name":"stdout","time":5480.164437332,"data":"target:  time flies\n"}
+,{"stream_name":"stdout","time":5480.367778006,"data":"model:  it s time over ten minutes \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367807571,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367814527,"data":"input:  有 人 說 中 國 像 是 俄 國 的 殖 民 地 。\n"}
+,{"stream_name":"stdout","time":5480.367821484,"data":"target:  some say that china was like a russian colony\n"}
+,{"stream_name":"stdout","time":5480.36782675,"data":"model:  sea are popular from hunger is the country twice \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367831669,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367836217,"data":"input:  我 在 哪 裡 可 以 搭 到 計 程 車 ？\n"}
+,{"stream_name":"stdout","time":5480.367884392,"data":"target:  where can i get a taxi ?\n"}
+,{"stream_name":"stdout","time":5480.367889855,"data":"model:  may park park ? \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.36789346,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367897009,"data":"input:  我 有 一 个 女 儿 。\n"}
+,{"stream_name":"stdout","time":5480.367900507,"data":"target:  i have a daughter\n"}
+,{"stream_name":"stdout","time":5480.367904011,"data":"model:  with me someday \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367907557,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367911032,"data":"input:  我 永 遠 不 會 再 看 到 他 。\n"}
+,{"stream_name":"stdout","time":5480.367914427,"data":"target:  i will never see him again\n"}
+,{"stream_name":"stdout","time":5480.367917996,"data":"model:  if you don t see him \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367921512,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367924982,"data":"input:  你 经 常 去 国 外 旅 行 吗 ？\n"}
+,{"stream_name":"stdout","time":5480.367928452,"data":"target:  do you often travel abroad ?\n"}
+,{"stream_name":"stdout","time":5480.367932056,"data":"model:  by a bus trip to london ? \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367935584,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367938974,"data":"input:  我 只 想 查 一 下 我 的 电 子 邮 件 。\n"}
+,{"stream_name":"stdout","time":5480.367942867,"data":"target:  i just wanted to check my email\n"}
+,{"stream_name":"stdout","time":5480.367946429,"data":"model:  i want to my phone number i might have \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367950199,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367953555,"data":"input:  他 把 他 的 意 思 對 我 講 清 楚 了 。\n"}
+,{"stream_name":"stdout","time":5480.367957295,"data":"target:  he got his meaning across to me\n"}
+,{"stream_name":"stdout","time":5480.367960817,"data":"model:  he suggested said i think of me \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367964253,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367967307,"data":"input:  我 依 然 不 关 心 。\n"}
+,{"stream_name":"stdout","time":5480.36797082,"data":"target:  i still don t care\n"}
+,{"stream_name":"stdout","time":5480.367974164,"data":"model:  i am t lonely without terribly \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.367977644,"data":"\n"}
+,{"stream_name":"stdout","time":5480.367981488,"data":"input:  我 不 能 忍 受 他 的 傲 慢 。\n"}
+,{"stream_name":"stdout","time":5480.367985252,"data":"target:  i can t stand his arrogance\n"}
+,{"stream_name":"stdout","time":5480.572935086,"data":"model:  i ordered that his arrogance \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.572959884,"data":"\n"}
+,{"stream_name":"stdout","time":5480.572964631,"data":"input:  为 了 看 野 生 动 物 ， 他 去 了 非 洲 。\n"}
+,{"stream_name":"stdout","time":5480.572969015,"data":"target:  he went to africa to see wild animals\n"}
+,{"stream_name":"stdout","time":5480.572972625,"data":"model:  the animals think he speaks very important \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.572976942,"data":"\n"}
+,{"stream_name":"stdout","time":5480.572980446,"data":"input:  我 能 在 這 附 近 打 車 嗎 ？\n"}
+,{"stream_name":"stdout","time":5480.572984143,"data":"target:  can i catch a taxi near here ?\n"}
+,{"stream_name":"stdout","time":5480.572987734,"data":"model:  by this bicycle for this gate can lead to small house \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.57300272,"data":"\n"}
+,{"stream_name":"stdout","time":5480.573006711,"data":"input:  我 从 窗 口 爬 进 来 的 。\n"}
+,{"stream_name":"stdout","time":5480.573010527,"data":"target:  i climbed in through the window\n"}
+,{"stream_name":"stdout","time":5480.573014197,"data":"model:  i pay in the mountains \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.573017821,"data":"\n"}
+,{"stream_name":"stdout","time":5480.573021387,"data":"input:  它 看 起 來 像 橙 子 。\n"}
+,{"stream_name":"stdout","time":5480.573025013,"data":"target:  it looks like an orange\n"}
+,{"stream_name":"stdout","time":5480.573028573,"data":"model:  please \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.573032062,"data":"\n"}
+,{"stream_name":"stdout","time":5480.573035279,"data":"input:  我 没 有 结 婚 。\n"}
+,{"stream_name":"stdout","time":5480.57303845,"data":"target:  i am not married\n"}
+,{"stream_name":"stdout","time":5480.573041812,"data":"model:  i don t know married \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.573045573,"data":"\n"}
+,{"stream_name":"stdout","time":5480.573048682,"data":"input:  她 為 他 做 了 一 套 新 衣 服 。\n"}
+,{"stream_name":"stdout","time":5480.573052123,"data":"target:  she made him a new suit\n"}
+,{"stream_name":"stdout","time":5480.573056098,"data":"model:  she made his new suit \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.573059703,"data":"\n"}
+,{"stream_name":"stdout","time":5480.573063057,"data":"input:  貝 多 芬 是 一 個 偉 大 的 音 樂 家 。\n"}
+,{"stream_name":"stdout","time":5480.57306648,"data":"target:  beethoven was a great musician\n"}
+,{"stream_name":"stdout","time":5480.57307004,"data":"model:  a large family of those days \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.573074046,"data":"\n"}
+,{"stream_name":"stdout","time":5480.573078003,"data":"input:  我 有 一 些 錢 。\n"}
+,{"stream_name":"stdout","time":5480.573081648,"data":"target:  i have a little money\n"}
+,{"stream_name":"stdout","time":5480.573085097,"data":"model:  some for money \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.573088592,"data":"\n"}
+,{"stream_name":"stdout","time":5480.573091961,"data":"input:  當 時 你 在 做 什 麼 ？\n"}
+,{"stream_name":"stdout","time":5480.57309573,"data":"target:  what were you doing at that time ?\n"}
+,{"stream_name":"stdout","time":5480.777310542,"data":"model:  when you were doing ? \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.777336195,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777340949,"data":"input:  这 个 家 庭 热 情 地 接 待 了 我 。\n"}
+,{"stream_name":"stdout","time":5480.777345336,"data":"target:  this family gave me a warm welcome\n"}
+,{"stream_name":"stdout","time":5480.777348891,"data":"model:  for their countries \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.77735252,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777356019,"data":"input:  詩 人 對 他 愛 的 女 人 表 達 了 他 火 熱 的 激 情 。\n"}
+,{"stream_name":"stdout","time":5480.777359773,"data":"target:  the poet expressed his burning passion for the woman he loved\n"}
+,{"stream_name":"stdout","time":5480.777363721,"data":"model:  his americans loved him new music \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.777367399,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777371191,"data":"input:  现 在 几 点 ？\n"}
+,{"stream_name":"stdout","time":5480.777374652,"data":"target:  what s the time ?\n"}
+,{"stream_name":"stdout","time":5480.777378471,"data":"model:  now now ? \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.777399134,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777403416,"data":"input:  他 在 生 你 的 氣 。\n"}
+,{"stream_name":"stdout","time":5480.777406941,"data":"target:  he is angry with you\n"}
+,{"stream_name":"stdout","time":5480.777410381,"data":"model:  you live born in your hand \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.777414436,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777417773,"data":"input:  昨 天 晚 上 你 在 哪 裡 ?\n"}
+,{"stream_name":"stdout","time":5480.777421189,"data":"target:  where were you last night ?\n"}
+,{"stream_name":"stdout","time":5480.777425381,"data":"model:  where is yesterday ? yesterday evening evening evening evening evening last night yesterday morning yesterday evening night alone evening night alone last night morning evening night on tuesday evening last night yesterday morning yesterday evening night alone last night morning evening night on tuesday evening\n"}
+,{"stream_name":"stdout","time":5480.777431003,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777434169,"data":"input:  实 际 上 我 错 了 。\n"}
+,{"stream_name":"stdout","time":5480.777438453,"data":"target:  actually i was wrong\n"}
+,{"stream_name":"stdout","time":5480.777442089,"data":"model:  it s wrong \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.777445621,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777448811,"data":"input:  她 周 遊 世 界 各 地 。\n"}
+,{"stream_name":"stdout","time":5480.77745243,"data":"target:  she has traveled all over the globe\n"}
+,{"stream_name":"stdout","time":5480.777455928,"data":"model:  every week from the world evening every morning \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.777459616,"data":"\n"}
+,{"stream_name":"stdout","time":5480.77746296,"data":"input:  是 的 ， 今 天 晚 上 很 愉 快 。\n"}
+,{"stream_name":"stdout","time":5480.777466529,"data":"target:  yes it s such a nice evening\n"}
+,{"stream_name":"stdout","time":5480.777469931,"data":"model:  in a very hurry today evening \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.777473405,"data":"\n"}
+,{"stream_name":"stdout","time":5480.777476621,"data":"input:  麻 煩 再 來 一 瓶 葡 萄 酒 。\n"}
+,{"stream_name":"stdout","time":5480.77748021,"data":"target:  one more bottle of wine please\n"}
+,{"stream_name":"stdout","time":5480.982840755,"data":"model:  please \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.982866322,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982869727,"data":"input:  让 我 看 看 那 些 照 片 。\n"}
+,{"stream_name":"stdout","time":5480.982873612,"data":"target:  let me have a look at those photos\n"}
+,{"stream_name":"stdout","time":5480.982876183,"data":"model:  let me know whoever some face \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.982880205,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982885363,"data":"input:  湯 姆 知 道 我 們 不 高 興 。\n"}
+,{"stream_name":"stdout","time":5480.98288964,"data":"target:  tom knows we aren t happy\n"}
+,{"stream_name":"stdout","time":5480.982893832,"data":"model:  i don t study happy \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.982897965,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982902039,"data":"input:  你 刷 过 牙 没 有 ？\n"}
+,{"stream_name":"stdout","time":5480.982906269,"data":"target:  have you brushed your teeth ?\n"}
+,{"stream_name":"stdout","time":5480.98291014,"data":"model:  or not used or not haven t eaten with or not daughters ? no hotel no teeth ? \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.982914347,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982935671,"data":"input:  湯 姆 給 瑪 麗 帶 了 些 花 。\n"}
+,{"stream_name":"stdout","time":5480.982939778,"data":"target:  tom bought some flowers for mary\n"}
+,{"stream_name":"stdout","time":5480.982945079,"data":"model:  tom mary gave some flowers \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.9829483,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982950596,"data":"input:  汤 姆 怕 狗 吗 ？\n"}
+,{"stream_name":"stdout","time":5480.982953225,"data":"target:  is tom afraid of dogs ?\n"}
+,{"stream_name":"stdout","time":5480.982955657,"data":"model:  is tom ? \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.982958189,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982960452,"data":"input:  她 把 我 哥 哥 誤 認 為 我 。\n"}
+,{"stream_name":"stdout","time":5480.98296287,"data":"target:  she mistook my brother for me\n"}
+,{"stream_name":"stdout","time":5480.982965274,"data":"model:  her mistook me for my brother \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.982967782,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982970034,"data":"input:  你 應 該 知 道 的 。\n"}
+,{"stream_name":"stdout","time":5480.982972465,"data":"target:  you should know it\n"}
+,{"stream_name":"stdout","time":5480.98297483,"data":"model:  you know worry \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.98297731,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982979579,"data":"input:  春 天 了\n"}
+,{"stream_name":"stdout","time":5480.982981937,"data":"target:  it s spring\n"}
+,{"stream_name":"stdout","time":5480.982984294,"data":"model:  spring spring spring weather \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5480.982986814,"data":"\n"}
+,{"stream_name":"stdout","time":5480.982989065,"data":"input:  上 车 吧 ！\n"}
+,{"stream_name":"stdout","time":5480.982991485,"data":"target:  get in the car\n"}
+,{"stream_name":"stdout","time":5481.131052898,"data":"model:  let s car ! \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.131080645,"data":"\n"}
+,{"stream_name":"stdout","time":5481.131085705,"data":"input:  出 去 ！\n"}
+,{"stream_name":"stdout","time":5481.13109103,"data":"target:  get out !\n"}
+,{"stream_name":"stdout","time":5481.131094593,"data":"model:  out out out out \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.131098437,"data":"\n"}
+,{"stream_name":"stdout","time":5481.131102138,"data":"input:  全 世 界 有 超 过 4 0 0 0 多 种 的 语 言 。\n"}
+,{"stream_name":"stdout","time":5481.131106522,"data":"target:  there are more than languages in the world\n"}
+,{"stream_name":"stdout","time":5481.131110394,"data":"model:  there s amount of americans half an hour ago \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.13111459,"data":"\n"}
+,{"stream_name":"stdout","time":5481.131118467,"data":"input:  你 从 昨 天 开 始 就 忙 吗 ？\n"}
+,{"stream_name":"stdout","time":5481.131122277,"data":"target:  have you been busy since yesterday ?\n"}
+,{"stream_name":"stdout","time":5481.13112596,"data":"model:  were you yesterday ? \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.131129712,"data":"\n"}
+,{"stream_name":"stdout","time":5481.131133242,"data":"input:  他 喜 歡 聽 廣 播 。\n"}
+,{"stream_name":"stdout","time":5481.131137067,"data":"target:  he likes listening to the radio\n"}
+,{"stream_name":"stdout","time":5481.131140879,"data":"model:  he loves to hear \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.131144678,"data":"\n"}
+,{"stream_name":"stdout","time":5481.131148724,"data":"input:  我 可 能 明 天 就 会 死 了 。\n"}
+,{"stream_name":"stdout","time":5481.131170122,"data":"target:  i might die tomorrow\n"}
+,{"stream_name":"stdout","time":5481.131174748,"data":"model:  i would be dead tomorrow \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.131178927,"data":"\n"}
+,{"stream_name":"stdout","time":5481.131183055,"data":"input:  至 少 告 诉 我 们 你 要 去 哪 里 。\n"}
+,{"stream_name":"stdout","time":5481.131186665,"data":"target:  at least tell me where you re going\n"}
+,{"stream_name":"stdout","time":5481.131191899,"data":"model:  none of us to go wherever you want \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.131213861,"data":"\n"}
+,{"stream_name":"stdout","time":5481.199851035,"data":"input = 昨 晚 是 满 月 。\n"}
+,{"stream_name":"stdout","time":5481.1998829,"data":"output = last month \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.405664428,"data":"input = 當 我 到 達 時 ， 天 正 下 著 雨 。\n"}
+,{"stream_name":"stdout","time":5481.405690743,"data":"output = sometimes i stay in june tomorrow \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.826312858,"data":"input = 我 往 右 拐 了 。\n"}
+,{"stream_name":"stdout","time":5481.826344026,"data":"output = i stood there \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5481.864071716,"data":"input = 新 娘 好 像 非 常 漂 亮 。\n"}
+,{"stream_name":"stdout","time":5481.864098029,"data":"output = to be pretty beautiful \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5482.474833139,"data":"input = 董 事 会 一 致 决 定 任 命 她 为 执 行 总 裁 。\n"}
+,{"stream_name":"stdout","time":5482.474861743,"data":"output = yesterday instead of us \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5482.730406672,"data":"input = 湯 姆 說 他 很 高 興 瑪 麗 畢 業 了 。\n"}
+,{"stream_name":"stdout","time":5482.730432563,"data":"output = tom s mistaken number but he wore a little dream \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5483.00445398,"data":"input = 她 買 了 兩 磅 的 奶 油 。\n"}
+,{"stream_name":"stdout","time":5483.004490137,"data":"output = two bought two pairs of english butter \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5483.228722168,"data":"input = 時 間 匆 匆 經 過 。\n"}
+,{"stream_name":"stdout","time":5483.228748632,"data":"output = it s time over ten minutes \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5483.461255263,"data":"input = 有 人 說 中 國 像 是 俄 國 的 殖 民 地 。\n"}
+,{"stream_name":"stdout","time":5483.461278357,"data":"output = sea are popular from hunger is the country twice \u003cEOS\u003e\n"}
+,{"stream_name":"stdout","time":5483.732056364,"data":"input = 我 在 哪 裡 可 以 搭 到 計 程 車 ？\n"}
+,{"stream_name":"stdout","time":5483.7320848,"data":"output = may park park ? \u003cEOS\u003e\n"}
+,{"stream_name":"stderr","time":5488.107137915,"data":"/usr/local/lib/python3.11/dist-packages/traitlets/traitlets.py:2915: FutureWarning: --Exporter.preprocessors=[\"remove_papermill_header.RemovePapermillHeader\"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.\n"}
+,{"stream_name":"stderr","time":5488.107175786,"data":"  warn(\n"}
+,{"stream_name":"stderr","time":5488.139635834,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":5488.426975124,"data":"[NbConvertApp] Writing 359068 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":5489.692377155,"data":"/usr/local/lib/python3.11/dist-packages/traitlets/traitlets.py:2915: FutureWarning: --Exporter.preprocessors=[\"nbconvert.preprocessors.ExtractOutputPreprocessor\"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.\n"}
+,{"stream_name":"stderr","time":5489.692434282,"data":"  warn(\n"}
+,{"stream_name":"stderr","time":5489.717424072,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":5490.494773411,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":5490.494811224,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.495075586,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.495233907,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.495432606,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.495600017,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.495791871,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.495955105,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.496107119,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.496287328,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.496447953,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.496587745,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":5490.496803415,"data":"[NbConvertApp] Writing 385455 bytes to __results__.html\n"}
+]
