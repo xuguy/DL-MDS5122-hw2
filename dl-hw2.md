@@ -253,4 +253,71 @@ The accuracy of translation by `GPT` is obviously higher than that of `seq2seq`
 <img src="misc/attn-layer1-head2.png" style="zoom:70%"><img src="misc/attn-layer1-head3.png" style="zoom:70%">
 
 ---
-## Part B: Fine Tune a Quantized *Qwen/Qwen2.5-3B-Instruct* With LoRA
+## Part B: Fine Tune Quantized `Qwen/Qwen2.5-3B-Instruct` With LoRA
+In this part, we did not use `LLaMA Factory`, but attempt to fine tune model manually.
+### 1. Load and process the dataset
+The [DISC-Law-SFT](https://huggingface.co/datasets/ShengbinYue/DISC-Law-SFT) claims to have 403K entries of data, but in fact, there are only ~286K available for download, they are:
+| Dataset                  | Task/Source                          | Size  |
+|--------------------------|--------------------------------------|-------|
+| DISC-Law-SFT-Pair        | Legal information extraction         | 32K   |
+|                          | Legal event detection                | 27K   |
+|                          | Legal case classification            | 20K   |
+|                          | ...                                  | ...   |
+| DISC-Law-SFT-Triple      | Legal judgment prediction            | 16K   |
+|                          | Legal question answering             | 23K   |
+| **Total**                |                                      | **285.7K** |
+
+This dataset is messy, names are inconsistent, for example
+each `Task/Source` has a unique id, for example, `'legal_question_answering_1'` correspond to the 1st data of ***legal question answering task***, but `'jud_read_compre-1'` is the first element of ***Judicial examination***
+And `DISC-Law-SFT-Pair` has different structure from 
+- `DISC-Law-SFT-Triple`, example:
+  - `DISC-Law-SFT-Pair` has 3 keys: `id, input, output`:
+    ```{'id': 'legal_question_answering_0', 
+    'input': '违章停车与违法停车是否有区别？',
+    'output': '对违反道路交通安全法律、法规关于机动车停放、临时停车规定的，可以指出违法行为...'}
+    ```
+
+  
+
+- `DISC-Law-SFT-Triple`,
+  -  has 4 keys: `id, reference, input, output`:
+        ```{'id': 'legal_question_answering_5',
+        'reference': 《票据法》第二十二条：汇票必须记载下列事项：（一）表明"汇票"的字样...,
+        'input': '...某公司在向供应商付款时使用了一张汇票，但付款日期和付款地没有清楚、明确的记载在汇票上。供应商认为汇票无效，请问是否属实？',
+        'output': '根据《票据法》第二十二条，汇票必须清楚明确地记载付款日期和付款地等事项，...'}
+    ```
+
+We process the 2 subset seperately, and convert raw data in the follow 'conversation' form:
+`from` = `human` means user input (prompt)
+`from` = `gpt` means model answer, here means the answer of `Qwen2.5-3B-Instruct`
+ 
+```python
+{'conversations': 
+[{'from': 'human', 'value': '违章停车与违法停车是否有区别？'},
+  {'from': 'gpt', 'value': '对违反道路交通安全法律、法规关于机动车停放、临时停车规定的，可以指出违法行为，并予以口头警告...'}]}
+```
+
+Finally get a dataset with 285.7K entries
+```
+Dataset({
+    features: ['conversations'],
+    num_rows: 285781
+})
+```
+
+Also, we randomly choose 1 question from each task category to evaluate the model performance **before fine-tuning**:
+10 task categories from `DISC-Law-SFT-Pair`, ids for each category:
+```
+{'op_sum-', 'leg_ele_extra-', 'leg_case_cls-',
+'legal_question_answering_', 
+'sim_case_match-', 'jud_read_compre-', 
+'jud_doc_sum-', 'leg_eve_detec-', 'exam-', 'sent_pred-'}
+```
+
+2 task categories from `DISC-Law-SFT-Triple`, ids for each category:
+```
+{'judgement_predit-', 'legal_question_answering_'}
+```
+
+
+## 2. Fine-tune the Qwen2.5-3B-Instrruct language model 
