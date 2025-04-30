@@ -335,7 +335,7 @@ Also, we randomly choose 1 question from each task category to evaluate the mode
 ***Disclaimer***
 1. Our original place was to use 90% of the data for fine-tuning, but we found there is a run-time limit for <u>**Kaggle**</u> free T4 x2 GPUs (as well as P100 GPU):
 
-<img src="mdfig\2025-04-29-23-50-12.png" style="zoom:100%">
+<img src="misc\2025-04-29-23-50-12.png" style="zoom:100%">
 Considering that using full data is just a matter of time, we decided to use only 10% (~31K), which is possible to finish in reasonable amount of time.
 
 1. We did not use ***LLaMA Factory*** for finetuning but done it manually, check the ready-to-run notebook. In order to maximize training speed, we set the following 3 parameters:
