@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>dl-hw2</title>
+      <title>dl-hw2-report</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -82,13 +82,12 @@ tensor<span class="token punctuation">(</span><span class="token punctuation">[<
         <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>
         <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre><p><em>Note</em>: we did not use <code>BPETokenizer</code> or other pre-defined tokenizer for tokenizing, we build our own tokenizer (words to ids mapping)</p>
-<hr>
 <h3 id="2-implement-a-seq2seq-model-with-attention-using-pytorch">2. Implement a seq2seq model with attention using PyTorch </h3>
 <p>We copy the codes <a href="https://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html">PyTorch Tutorial</a></p>
 <h3 id="3-train-the-network-starting-from-random-initialization">3. Train the network starting from random initialization </h3>
 <p><strong>Loss curve:</strong><br>
 we record traing loss every 5 epochs, we have total 80 epochs.<br>
-<img src="misc/seq2seq_loss.png" style="zoom:70%"></p>
+<img src="misc/seq2seq_loss.png" style="zoom:100%"></p>
 <p><strong>Model translation</strong>: 10 examples from test set:</p>
 <pre data-role="codeBlock" data-info="" class="language-text"><code>input:  您 想 再 来 点 茶 吗 ？
 target:  would you like some more tea ?
@@ -195,7 +194,7 @@ We copy the visualization codes <a href="https://pytorch.org/tutorials/intermedi
 <h3 id="3-train-the-network-starting-from-random-initialization-1">3. Train the network starting from random initialization </h3>
 <p><strong>Loss curve:</strong><br>
 we record traing loss every 5 epochs, we have total 80 epochs.<br>
-<img src="misc/gpt_loss.png" style="zoom:70%"></p>
+<img src="misc/gpt_loss.png" style="zoom:100%"></p>
 <p><strong>Model translation</strong>: 10 examples from test set:<br>
 <em>Note:</em><br>
 <code>&gt;</code>: input Chinese text<br>
@@ -258,6 +257,303 @@ predict ends
 <strong>Attention Weights of layer1 head 0-3 Visualization</strong><br>
 <img src="misc/attn-layer1-head0.png" style="zoom:70%"><img src="misc/attn-layer1-head1.png" style="zoom:70%"><br>
 <img src="misc/attn-layer1-head2.png" style="zoom:70%"><img src="misc/attn-layer1-head3.png" style="zoom:70%"></p>
+<h3 id="what-have-i-learnt">What have I Learnt </h3>
+<ol>
+<li>
+<p>How does <code>GPT based</code> model learn to translate from source language to target language without instruction fine-tuning?<br>
+The answer is by <u><em>constructing <code>src-tgt</code> data pairs</em></u>. Because all the data we feed into the model is <code>&lt;sos&gt;English&lt;sep&gt;Chinese&lt;eos&gt;</code>, the model learn the patterns, so next time we input <code>&lt;sos&gt;English&lt;sep&gt;</code> to a trained GPT model, the model is able to output(predict) the missing <code>Chinese&lt;eos&gt;</code> part. The format of the constructed dataset is itself an <code>instruction</code></p>
+</li>
+<li>
+<p>What does <em>attention</em> mean when we talk about <em>visualizing attention</em>?<br>
+By constructing a minimal GPT model from scratch, we learn the structure of the building block of GPT model: <em>attention block</em>, as well as the key component <em>attention weights matrix</em> (<u>the attention we want to visualize</u>) -- the lower triangular matrix by <strong>masking</strong> the upper triangular part of:<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>softmax</mtext><mrow><mo fence="true">(</mo><mfrac><mrow><mi>Q</mi><msup><mi>K</mi><mi>T</mi></msup></mrow><msqrt><msub><mi>d</mi><mi>k</mi></msub></msqrt></mfrac><mo fence="true">)</mo></mrow></mrow><annotation encoding="application/x-tex">\text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.4684em;vertical-align:-0.95em;"></span><span class="mord text"><span class="mord">softmax</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">(</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5183em;"><span style="top:-2.2528em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8572em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span><span style="top:-2.8172em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1828em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">Q</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">)</span></span></span></span></span></span></span></p>
+<p><u><em><strong>Note that this part is not multiplied by the <em>Value</em> matrix</strong></em> </u></p>
+</li>
+</ol>
+<hr>
+<h2 id="part-b-fine-tune-quantized-qwenqwen25-3b-instruct-with-lora">Part B: Fine Tune Quantized <code>Qwen/Qwen2.5-3B-Instruct</code> With LoRA </h2>
+<p>In this part, we did not use <code>LLaMA Factory</code>, but attempt to fine tune model manually.</p>
+<h3 id="1-load-and-process-the-dataset-2">1. Load and process the dataset </h3>
+<p>The <a href="https://huggingface.co/datasets/ShengbinYue/DISC-Law-SFT">DISC-Law-SFT</a> claims to have 403K entries of data, but in fact, there are only ~286K available for download, they are:</p>
+<table>
+<thead>
+<tr>
+<th>Dataset</th>
+<th>Task/Source</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DISC-Law-SFT-Pair</td>
+<td>Legal information extraction</td>
+<td>32K</td>
+</tr>
+<tr>
+<td></td>
+<td>Legal event detection</td>
+<td>27K</td>
+</tr>
+<tr>
+<td></td>
+<td>Legal case classification</td>
+<td>20K</td>
+</tr>
+<tr>
+<td></td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>DISC-Law-SFT-Triple</td>
+<td>Legal judgment prediction</td>
+<td>16K</td>
+</tr>
+<tr>
+<td></td>
+<td>Legal question answering</td>
+<td>23K</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>285.7K</strong></td>
+</tr>
+</tbody>
+</table>
+<p>This dataset is messy, names are inconsistent, for example<br>
+each <code>Task/Source</code> has a unique id, for example, <code>'legal_question_answering_1'</code> correspond to the 1st data of <em><strong>legal question answering task</strong></em>, but <code>'jud_read_compre-1'</code> is the first element of <em><strong>Judicial examination</strong></em><br>
+And <code>DISC-Law-SFT-Pair</code> has different structure from</p>
+<ul>
+<li>
+<p><code>DISC-Law-SFT-Triple</code>, example:</p>
+<ul>
+<li><code>DISC-Law-SFT-Pair</code> has 3 keys: <code>id, input, output</code>:<pre data-role="codeBlock" data-info="{'id': 'legal_question_answering_0'," class="language-{'id': 'legal_question_answering_0', {'id':"><code>'input': '违章停车与违法停车是否有区别？',
+'output': '对违反道路交通安全法律、法规关于机动车停放、临时停车规定的，可以指出违法行为...'}
+</code></pre></li>
+</ul>
+</li>
+<li>
+<p><code>DISC-Law-SFT-Triple</code>,</p>
+<ul>
+<li>has 4 keys: <code>id, reference, input, output</code>:<pre data-role="codeBlock" data-info="{'id': 'legal_question_answering_5'," class="language-{'id': 'legal_question_answering_5', {'id':"><code>'reference': 《票据法》第二十二条：汇票必须记载下列事项：（一）表明"汇票"的字样...,
+'input': '...某公司在向供应商付款时使用了一张汇票，但付款日期和付款地没有清楚、明确的记载在汇票上。供应商认为汇票无效，请问是否属实？',
+'output': '根据《票据法》第二十二条，汇票必须清楚明确地记载付款日期和付款地等事项，...'}
+</code></pre></li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-text"><code></code></pre></li>
+</ul>
+<p>We process the 2 subset seperately, and convert raw data in the follow 'conversation' form:<br>
+<code>from</code> = <code>human</code> means user input (prompt)<br>
+<code>from</code> = <code>gpt</code> means model answer, here means the answer of <code>Qwen2.5-3B-Instruct</code></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token punctuation">{</span><span class="token string">'conversations'</span><span class="token punctuation">:</span> 
+<span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token string">'from'</span><span class="token punctuation">:</span> <span class="token string">'human'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">:</span> <span class="token string">'违章停车与违法停车是否有区别？'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span><span class="token string">'from'</span><span class="token punctuation">:</span> <span class="token string">'gpt'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">:</span> <span class="token string">'对违反道路交通安全法律、法规关于机动车停放、临时停车规定的，可以指出违法行为，并予以口头警告...'</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+</code></pre><p>Finally get a dataset with 285.7K entries</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Dataset({
+    features: ['conversations'],
+    num_rows: 285781
+})
+</code></pre><p>Also, we randomly choose 1 question from each task category to evaluate the model performance <strong>before fine-tuning</strong>:<br>
+10 task categories from <code>DISC-Law-SFT-Pair</code>, ids for each category:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>{'op_sum-', 'leg_ele_extra-', 'leg_case_cls-',
+'legal_question_answering_', 
+'sim_case_match-', 'jud_read_compre-', 
+'jud_doc_sum-', 'leg_eve_detec-', 'exam-', 'sent_pred-'}
+</code></pre><p>2 task categories from <code>DISC-Law-SFT-Triple</code>, ids for each category:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>{'judgement_predit-', 'legal_question_answering_'}
+</code></pre><h2 id="2-fine-tune-the-qwen25-3b-instrruct-language-model">2. Fine-tune the Qwen2.5-3B-Instrruct language model </h2>
+<p><em><strong>Disclaimer</strong></em></p>
+<ol>
+<li>Our original place was to use 90% of the data for fine-tuning, but we found there is a run-time limit for <u><strong>Kaggle</strong></u> free T4 x2 GPUs (as well as P100 GPU):</li>
+</ol>
+<img src="mdfig\2025-04-29-23-50-12.png" style="zoom:100%">
+Considering that using full data is just a matter of time, we decided to use only 10% (~31K), which is possible to finish in reasonable amount of time.
+<ol>
+<li>We did not use <em><strong>LLaMA Factory</strong></em> for finetuning but done it manually, check the ready-to-run notebook. In order to maximize training speed, we set the following 3 parameters:</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>num_train_epochs=1,
+per_device_train_batch_size=4,
+gradient_accumulation_steps=4,
+</code></pre><p><code>per_device_train_batch_size</code> set to be 4, hence GPU RAM-consuming.<br>
+(you should have at least 16GB CUDA RAM to run it without modifying the code, you can use <strong>Kaggle</strong> free GPU, check <a href="http://README.md">README.md</a>)</p>
+<h3 id="training-loss">Training Loss </h3>
+<p><strong>Steps</strong>: how many time does the trainer update the weights, here we have <code>983 steps</code> = <code>data_size</code> / (<code>per_device_train_batch_size</code> x <code>device_num </code>x <code>gradient_accumulation_steps</code>) = 27K / 32<br>
+<img src="misc/loss_curve.png" style="zoom:100%"></p>
+<h3 id="conclusion">Conclusion </h3>
+<p>We found that there is no obvious improvement to fine-tuning the base <u><em>Qwen2.5-3B-Instrruct</em></u> model: <strong>perhaps the base model is already good enough (check the following results, especially the model answer (pre fine-tuned)).</strong></p>
+<p>We then present the model answer before and after fine-tuned toghether with the corresponding question+answer, here are 5 typical examples:</p>
+<table>
+<thead>
+<tr>
+<th>question_id</th>
+<th>jud_read_compre-1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>请根据下面的案例描述对所提出的问题进行回答\n文本为：'经审理查明，2012年10月间，被告人兰x1伙同他人在烟台市芝罘区，使用虚假的购车合同、首付款收据、收入证明等材料，以办理购车贷款为由，通过烟台市祥海资产管理有限公司向中国工商银行股份有限公司烟台芝罘支行骗取贷款人民币19万余9，其用于购买黄金、手机等物品，后被告人兰x1变更个人联系方式，且未偿还贷款。2013年4月16日，被告人兰x1被抓获归案后，其亲属代其退赔了赃款人民币196000元。上述事实，被告人兰x1在开庭审理过程中亦无异议，且有被告人兰x1的供述，证人曲10、陈某等的证言，银行卡交易明细，虚假的购车合同、收款收据、贷款业务申请书等一宗，公安机关出具的扣押发还物品清单、羁押期间表现情况表、工作情况、户籍证明等证据证实，足以认定。'，问题为：'被告人骗取贷款的理由是什么？'</td>
+</tr>
+<tr>
+<td>Answer</td>
+<td>办理购车贷款</td>
+</tr>
+<tr>
+<td>Model answer (pre-fine tune)</td>
+<td>根据提供的案例描述，被告人兰x1骗取贷款的理由是：以办理购车贷款为由，使用虚假的购车合同、首付款收据、收入证明等材料。具体来说，他声称是为了办理购车贷款，但实际上并没有买车，而是将骗取的贷款用于购买黄金和手机等物品。&lt;|im_end|&gt;</td>
+</tr>
+<tr>
+<td>Model answer (fine-tuned)</td>
+<td>根据案件描述，被告人兰x1骗取贷款的理由是使用虚假的购车合同、首付款收据、收入证明等材料，并声称自己要办理购车贷款。他通过烟台市祥海资产管理有限公司向中国工商银行股份有限公司烟台芝罘支行申请贷款人民币19万9。所以，被告人骗取贷款的理由是提供虚假的文件材料，以办理购车贷款为借口来获取银行贷款。&lt;|im_end|&gt;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>question_id</th>
+<th>leg_case_cls-1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>以下文本反映了什么类型的风险\n投诉编号: 17349058626 投诉对象: 4399游戏 投诉问题: 客服不理人,不予退款,联系不到客服 投诉要求: 退款 涉诉金额: 22196元 投诉进度: 处理中2020年2月27日至2020年3月12日盗用父母软件进行4399游戏充值,期间2月份累计充值4399手机游戏5520元人民币,3月份累计充值4399网页游戏16676元人民币,因是未成年人其行为属于无民事行为能力人或者限制民事行为能力人,依照《民法总则》有关规定,无民事行为能力人这种情况下的民事主体实施行为的范围受到限制,只能由其法定代理人代理实施民事法律行为;限制民事行为能力人可以进行与他的年龄、智力相适应的民事活动;其他民事活动由他的法定代理人代理,或者征得他的法定代理人的同意.所以我希望贵公司给予退款</td>
+</tr>
+<tr>
+<td>Answer</td>
+<td>盗用风险</td>
+</tr>
+<tr>
+<td>Model answer (pre-fine tune)</td>
+<td>根据提供的信息，这段投诉文本反映的主要风险类型是<strong>消费者权益保护和未成年人保护</strong>。\n\n具体来说，投诉涉及以下几个方面的问题：\n1. <strong>消费者权益受损</strong>：用户在未成年人的情况下进行了高额充值，但之后无法联系到客服，且客服拒绝退款。\n2. <strong>未成年人保护</strong>：用户指出自己是未成年人，因此其充值行为可能不符合相关法律法规的规定。根据《民法总则》，未成年人在某些情况下需要由法定代理人代理其民事活动。\n\n从投诉内容来看，主要的风险点在于：\n- <strong>退款问题</strong>：用户希望获得退款，但客服未予回应。\n- <strong>未成年人权益保护</strong>：用户认为其作为未成年人，充值行为应受到特别保护，希望公司能够按照相关规定处理。\n\n此外，该投诉还涉及到<strong>网络安全</strong>的问题，因为用户提到的是通过父母的账号进行充值，可能存在个人信息泄露的风险。\n\n综合来看，这段投诉文本反映了消费者权益保护以及未成年人权益保护的问题，同时也涉及到了网络安全和退款问题。&lt;|im_end|&gt;</td>
+</tr>
+<tr>
+<td>Model answer (fine-tuned)</td>
+<td>这段投诉内容反映的主要风险类型是消费者权益受损和诈骗。\n\n具体分析如下：\n\n1. <strong>消费者权益受损</strong>：用户表示自己作为未成年人，没有能力自行决定这些充值行为，并且在充值后发现无法联系到客服，导致问题无法得到及时解决。这种情况下用户的合法权益受到了侵害。\n\n2. <strong>诈骗</strong>：从投诉描述来看，用户似乎是在尝试使用非本人账户进行充值操作（例如，通过盗用父母的软件）。虽然用户强调自己是未成年人并且这种行为属于无民事行为能力或限制民事行为能力人，但这种非本人操作的行为仍然可能涉及网络欺诈风险。\n\n综合来看，这个投诉涉及到消费者与商家之间的信任缺失以及消费者的合法权益受到侵犯的风险，同时也可能存在潜在的网络诈骗风险。投诉者希望获得退款来弥补自己的损失，同时希望能够解决问题并防止类似情况再次发生。&lt;|im_end|&gt;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>question_id</th>
+<th>judgement_predit-1 （判决预测题）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>基于下列案件，推测可能的判决结果。\n经审理查明，2015年6月21日15时许，被告人白某某在大东区小河沿公交车站乘坐被害人张某某驾驶的133路公交车，当车辆行驶至沈阳市大东区东陵西路26号附近时，被告人白某某因未能下车而与司机张某某发生争执，并在该公交车行驶中用手拉拽档杆，被证人韩某某拉开后，被告人白某某又用手拉拽司机张某某的右胳膊，导致该车失控撞向右侧马路边停放的轿车和一个路灯杆，路灯杆折断后将福锅记炖品店的牌匾砸坏。后经被害人张某某报警，公安人员赶至现场将被告人白某某传唤到案。经鉴定，公交车受损价值人民币5,189.9元，轿车受损价值人民币1,449.57元，路灯杆受损价值人民币2,927.15元，福锅记饭店牌匾受损价值人民币9,776元，本案损失价值共计人民币19,342.6元。上述事实，被告人白某某在庭审中亦无异议，被害人张某某、朱某某、詹某某陈述，证人韩某某的证言，现场勘察笔录，视听资料，鉴定结论书，被告人白某某的供述与辩解等证据证实，足以认定。</td>
+</tr>
+<tr>
+<td>Answer</td>
+<td>根据《刑法》第一百一十四条的规定，被告人白某某以危险方法危害公共安全，尚未造成严重后果。根据案件事实，被告人白某某在公交车上与司机发生争执，并用手拉拽档杆和司机的胳膊，导致公交车失控撞向停放的轿车和路灯杆，最终造成公交车、轿车、路灯杆以及福锅记饭店牌匾的损坏。根据鉴定结果，本案损失共计人民币19,342.6元。\n综上所述，根据《刑法》第一百一十四条的规定，被告人白某某的行为构成以危险方法危害公共安全罪。根据该罪的刑罚幅度，可判处三年以上十年以下有期徒刑。\n需要注意的是，以上仅为根据提供的案件事实和相关法律条文进行的推理，最终的判决结果还需根据法庭审理的具体情况和法官的判断做出</td>
+</tr>
+<tr>
+<td>Model answer (pre-fine tune)</td>
+<td>根据您提供的案件细节，可以推测出以下几点：\n\n1. <strong>犯罪行为</strong>：被告人白某某在公交车行驶过程中，因未能及时下车与司机发生争执，并且在车辆行驶中对司机进行拉拽，导致车辆失控，造成了财产损失。\n\n2. <strong>损害后果</strong>：根据鉴定结果，公交车、轿车以及路灯杆均受到了不同程度的损坏，损失金额总计为19,342.6元。此外，还损坏了福锅记炖品店的牌匾，损失价值为9,776元。\n\n3. <strong>法律依据</strong>：根据《中华人民共和国刑法》的相关规定，如果被告人白某某的行为构成犯罪，可能会面临相应的刑事处罚。具体刑罚取决于法院的判决结果，可能包括但不限于罚款、拘役、有期徒刑等。\n\n4. <strong>量刑考量</strong>：\n</td>
+</tr>
+<tr>
+<td>Model answer (fine-tuned)</td>
+<td>根据您提供的案件详情，这是一个涉及公交车事故的刑事案件。案件中的被告人白某某因未能及时下车引发与司机张某某的冲突，最终导致车辆失控撞到路边设施并造成财物损坏。根据这些信息，我们可以大致推测可能出现的判决结果：\n\n1. <strong>民事责任</strong>：被告人在交通事故中造成公共财物（包括公交车、轿车、路灯杆和牌匾）以及他人财产（如福锅记炖品店的牌匾）受损，需要对这些损失进行赔偿。法院可能会要求白某某支付相应的经济损失，包括车辆、物品的修复费用和赔偿牌匾等物品的市场价值。\n\n2. <strong>刑事责任</strong>：\n</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>question_id</th>
+<th>sent_pred-1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>根据案件信息，预测下列案件的最终裁决。\n广东省广州市增城区人民检察院指控，2013年6月开以来，被告人李某以牟利为目的，其经营的位于增城区新塘镇大墩村创业西路312-3号新康诊所内，非法销售无药品批文号的“虎哥”、“蓝色伟哥”等14种110盒壮阳药。2014年11月14日被公安机关当场查获。经增城区食品药品监督管理局审查认定，上述药品均属应经批准而未经批准生产、进口的情形，应以假药论处。庭审中，公诉机关向法庭出示了被告人供述、药品鉴定意见书等等证据，据此指控被告人李某的行为已构成销售假药罪。鉴于被告人李某如实供述，依法可从轻处罚。提请本院依照《中华人民共和国《刑法》》××、××××之规定，对被告人判处刑罚。</td>
+</tr>
+<tr>
+<td>Answer</td>
+<td>根据《刑法》第一百四十一条，生产、销售假药的行为构成犯罪。\n在本案中，被告人李某以牟利为目的，在其经营的诊所内非法销售了14种无药品批文号的壮阳药。\n经过食品药品监督管理局的审查认定，上述药品均属应经批准而未经批准生产、进口的情形，属于假药。\n公诉机关在庭审中出示了被告人的供述和药品鉴定意见书等证据，证明了被告人李某的行为构成销售假药罪。\n根据以上推理，可以得出以下判决和处罚建议：\n被告人李某犯有销售假药罪，依照《刑法》第一百四十一条的规定，建议判处三年以下有期徒刑，并处罚金。鉴于被告人如实供述，可以考虑从轻处罚。\n请注意，以上仅为一种可能的判决和处罚建议，具体判决结果还需根据法庭审理的情况、法官的判断和适用法律的具体规定来确定。</td>
+</tr>
+<tr>
+<td>Model answer (pre-fine tune)</td>
+<td>根据您提供的案件信息，被告人李某涉嫌销售假药罪。根据相关法律规定和案件事实，以下是对该案件最终裁决的预测：\n\n### 案件背景\n- <strong>时间</strong>：2013年6月至2014年11月\n- <strong>地点</strong>：广东省广州市增城区新塘镇大墩村创业西路312-3号新康诊所\n- <strong>行为</strong>：非法销售无药品批文号的壮阳药（共14种，110盒）\n- <strong>查获</strong>：2014年11月14日被公安机关当场查获\n- <strong>认定</strong>：上述药品均属应经批准而未经批准生产、进口的情形，应以假药论处\n\n### 法律依据\n- 根据《中华人民共和国刑法》第141条的规定，销售假药的行为构成销售假药罪。\n\n### 量刑建议\n- 被告人李某如实供述，依法可以从轻处罚。\n- 根据案件的具体情节、社会危害性以及认罪态度等因素，法院可能会综合考虑这些因素进行判决。\n\n### 预测的最终裁决\n基于以上信息，预测的最终裁决可能如下：\n- 被告人李某因销售假药罪被判处有期徒刑，并处以相应的罚金。\n- 可能的量刑范围：被告人李某可能面临三年至五年有期徒刑，并处以相应的罚金。\n\n### 注意事项\n- 最终裁决结果需由法院根据具体案情进行审理并作出判决。\n- 本案的具体量刑还需结合法院审理过程中查明的事实、证据及法律适用情况来确定。\n\n请注意，这只是一个预测性的分析，实际判决结果需要由法院根据具体情况作出。&lt;|im_end|&gt;</td>
+</tr>
+<tr>
+<td>Model answer (fine-tuned)</td>
+<td>根据提供的案件信息，被告人李某在经营新康诊所的过程中，非法销售无药品批文号的壮阳药物，这些药品属于应经批准而未经批准生产或进口的情况，依据相关法规，应以假药论处，构成了销售假药罪。\n\n根据案件事实及法律依据，以下是我对该案的初步预测：\n\n1. <strong>定罪</strong>：根据上述指控和证据，李某可能已经被指控构成销售假药罪。假药罪是指违反国家关于药品管理的规定，在生产、销售过程中使用假药的行为。根据案件描述，李某确实存在销售无批文号的假药的行为，因此有很高的可能性被法院认定构成销售假药罪。\n\n2. <strong>量刑</strong>：鉴于李某在庭审中如实供述，依法可以从轻处罚。这意味着法官可能会基于此情节给予一定的减轻处罚。具体的量刑还需要结合李某的犯罪情节、认罪态度以及悔罪表现等因素综合考虑。\n\n3. <strong>附加措施</strong>：根据法律规定，法院判决可能还会要求李某承担民事赔偿责任，并进行相应的社区服务或者接受其他形式的矫正措施。\n\n最终的裁决需要根据广州市增城区人民法院审理结果确定，包括具体的罪名定性、量刑范围等，以上仅为预测。实际裁决还需由法庭按照法律程序作出。&lt;|im_end|&gt;</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>question_id</th>
+<th>legal_question_answering_1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Question</td>
+<td>《民法典》第九百七十四条：除合伙合同另有约定外，合伙人向合伙人以外的人转让其全部或者部分财产份额的，须经其他合伙人一致同意。\n《民法典》第九百七十五条：合伙人的债权人不得代位行使合伙人依照本章规定和合伙合同享有的权利，但是合伙人享有的利益分配请求权除外。\n《民法典》第九百七十三条：合伙人对合伙债务承担连带责任。清偿合伙债务超过自己应当承担份额的合伙人，有权向其他合伙人追偿。\n《民法典》第九百七十六条：合伙人对合伙期限没有约定或者约定不明确，依据本法第五百一十条的规定仍不能确定的，视为不定期合伙。合伙期限届满，合伙人继续执行合伙事务，其他合伙人没有提出异议的，原合伙合同继续有效，但是合伙期限为不定期。合伙人可以随时解除不定期合伙合同，但是应当在合理期限之前通知其他合伙人。\n&lt;问题&gt;：\n在不定期合伙的情况下，一个合伙人突然退出并清偿了其应当承担份额的合伙债务后，是否有权向其他合伙人追偿？</td>
+</tr>
+<tr>
+<td>Answer</td>
+<td>根据《民法典》第九百七十三条规定，合伙人对合伙债务承担连带责任。当一个合伙人突然退出并清偿了其应当承担份额的合伙债务后，依法有权向其他合伙人追偿。</td>
+</tr>
+<tr>
+<td>Model answer (pre-fine tune)</td>
+<td>在不定期合伙的情况下，如果一个合伙人已经清偿了其应当承担的合伙债务，并且符合《民法典》第九百七十三条中规定的条件（即清偿合伙债务超过自己应当承担份额的合伙人），那么该合伙人是有权向其他合伙人追偿的。\n\n具体来说，根据《民法典》第九百七十三条的规定，合伙人对合伙债务承担连带责任。因此，如果该合伙人清偿了超出自己应当承担份额的部分债务，他有权向其他合伙人追偿这部分超额支付的部分。只要其他合伙人没有提出异议，该合伙人就可以向其他合伙人追偿。\n\n需要注意的是，合伙人之间的追偿权是基于合伙关系中的连带责任基础，因此在追偿过程中，其他合伙人也应履行相应的义务。&lt;|im_end|&gt;</td>
+</tr>
+<tr>
+<td>Model answer (fine-tuned)</td>
+<td>在不定期合伙的情况下，如果一个合伙人退出并清偿了其应当承担的合伙债务后，是否能向其他合伙人追偿需要根据具体情况来分析。\n\n首先，根据《民法典》第九百七十三条的规定，合伙人对合伙债务承担连带责任。这意味着每个合伙人对于合伙债务都有共同的责任，即使已经清偿了其应当承担的份额，该合伙人仍然有权基于连带责任要求其他合伙人偿还其所应承担的部分。因此，如果某合伙人已经清偿了其应当承担的合伙债务份额，理论上他是有权利向其他合伙人追偿，要求他们支付相应的差额。\n\n但是，《民法典》第九百七十五条也规定，合伙人的债权人不得代位行使合伙人依照本章规定和合伙合同享有的权利，但是合伙人享有的利益分配请求权除外。这意味着合伙人之间的债权关系不同于普通债权人与债务人之间的关系，合伙人之间的权益分配请求权是受保护的。\n\n综上所述，在不定期合伙情况下，被清偿合伙债务的合伙人虽然有权基于连带责任向其他合伙人追偿其应当承担的份额，但这一权利受到《民法典》第九百七十五条限制。即合伙人之间的债权关系属于合伙人之间权益分配请求权的范畴，债权人（在合伙人内部）是不能直接代位行使权利的，只能请求按各自的份额分配利益。因此，该合伙人不能直接通过债权人身份向其他合伙人主张权益。\n\n需要注意的是，上述结论基于一般法律原则，具体案例中可能会因具体情况和相关合同条款有所不同。如果有具体的合同条款或者其他特殊规定，还需要结合这些情况进行综合判断。&lt;|im_end|&gt;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-have-i-learnt-1">What have I learnt </h3>
+<ol>
+<li>
+<p><code>batch_size</code> consumes a lot of GPU RAM if number of model parameters is large: because there is a large amount of activation units (values) within the model</p>
+<p><code>Memory increase</code> = <code>batch_size</code> × <code>activation_size_per_sample</code></p>
+<ul>
+<li>Example: For a 3B model generating 3000 tokens, activations per sample ≈1MB → batch_size=4 requires ~2GB additional memory.</li>
+</ul>
+</li>
+<li>
+<p>Memory efficiency optimization via Model Quantization (Mixed Precision Training) + Gradient Accumulation strategy</p>
+<ul>
+<li><strong>Mixed Precision Training</strong>:<br>
+Using FP16/BF16 reduces memory usage to 50%-25% of FP32.</li>
+<li><strong>Gradient Accumulation</strong>:<br>
+Accumulates gradients over multiple small batches before updating parameters (equivalent to larger batch_size without increased memory).</li>
+</ul>
+</li>
+<li>
+<p>Usable GPU Memory does not linearly grow as the number of usable GPUs: common data parallelism strategy copy model to both GPUs, so increasing the number of GPUs will not gurrantee the capability of running a larger model (<strong>Qwen-7B</strong> for example)</p>
+</li>
+<li>
+<p>Mechanism of <strong>Data Parallelism</strong>, which is the most common strategy (here) for multi-GPU training, with its core logic being to reduce training cycles by expanding <em><strong>the effective batch size</strong></em>:</p>
+<ul>
+<li><strong>Data Partitioning</strong>: Split training data into subsets (e.g., 140K samples per GPU for 280K total data). Each GPU computes local gradients independently.</li>
+<li><strong>Gradient Synchronization</strong>: Aggregate gradients across GPUs via communication algorithms like All-Reduce (e.g., using NCCL for efficient gradient summation).</li>
+<li><strong>Effective Batch Scaling</strong>: If the per-GPU batch size is 4 with 2 GPUs and gradient accumulation steps=2, the effective batch size becomes 4×2×2=16. This reduces total iterations by covering more samples per training step.</li>
+</ul>
+</li>
+</ol>
 
       </div>
       
